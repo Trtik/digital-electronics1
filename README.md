@@ -1,3 +1,5 @@
 # digital-electronics-1
 ## odkaz
-[I'm an inline-style link](https://www.google.com)
+[odkaz na google](https://www.google.com)
+__Google odkaz__
+Tímto odkazem se dostaneš na stránku.
