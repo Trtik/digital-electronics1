@@ -70,7 +70,6 @@ begin
       wait for 50 ns;
 
     end loop;
-
     report "Stimulus process finished";
     wait;
 

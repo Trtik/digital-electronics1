@@ -66,6 +66,7 @@ begin
       seg(2) => CE,
       seg(1) => CF,
       seg(0) => CG
+      
     );
 
   -- Connect one common anode to 3.3V
@@ -78,15 +79,14 @@ begin
 -- Experiments on your own: LED(7:4) indicators
 
 -- Turn LED(4) on if input value is equal to 0, ie "0000"
--- LED(4) <= `0` when WRITE YOUR CODE HERE
-
+   LED(4) <= '1' when SW = "0000" else '0';
 -- Turn LED(5) on if input value is greater than "1001", ie 10, 11, 12, ...
--- LED(5) <= WRITE YOUR CODE HERE
+   LED(5) <= '1' when sw > "1001" else '0';
 
 -- Turn LED(6) on if input value is odd, ie 1, 3, 5, ...
--- LED(6) <= WRITE YOUR CODE HERE
+   LED(6) <= '1' when sw(0) = '1' else '0';
 
 -- Turn LED(7) on if input value is a power of two, ie 1, 2, 4, or 8
--- LED(7) <= WRITE YOUR CODE HERE
+   LED(7) <= '1' when sw = "1000" OR sw = "0100" OR sw = "0010" OR sw = "0001" else '0';
 
 end architecture behavioral;
