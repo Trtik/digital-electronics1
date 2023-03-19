@@ -105,9 +105,9 @@ begin
 
     -- Change counter direction
     sig_cnt_up <= '1';
-    wait for 380 ns;
+    wait for 200 ns;
     sig_cnt_up <= '0';
-    wait for 186 ns;
+    wait for 200 ns;
 
     -- Disable counting
     sig_en <= '0';
