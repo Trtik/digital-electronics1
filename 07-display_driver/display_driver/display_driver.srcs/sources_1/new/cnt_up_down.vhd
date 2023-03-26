@@ -32,8 +32,8 @@ entity cnt_up_down is
     clk    : in    std_logic; --! Main clock
     rst    : in    std_logic; --! Synchronous reset
     en     : in    std_logic; --! Enable input
-    cnt_up : in    std_logic; --! Direction of the counter
-    cnt    : out   std_logic_vector(g_CNT_WIDTH - 1 downto 0)
+    cnt_up : in    std_logic; --! Direction of the counter (1 @ UP, 0 @ DOWN)
+    cnt    : out   std_logic_vector(g_CNT_WIDTH - 1 downto 0) --! Counter value
   );
 end entity cnt_up_down;
 
@@ -43,7 +43,7 @@ end entity cnt_up_down;
 
 architecture behavioral of cnt_up_down is
 
-  signal sig_cnt : unsigned(g_CNT_WIDTH - 1 downto 0); --! Local counter
+  signal sig_cnt : unsigned(g_CNT_WIDTH - 1 downto 0) := (others => '0'); --! Local counter
 
 begin
 
@@ -59,12 +59,14 @@ begin
       if (rst = '1') then           -- Synchronous reset
         sig_cnt <= (others => '0'); -- Clear all bits
       elsif (en = '1') then         -- Test if counter is enabled
-        if (cnt_up = '1') then 
-            sig_cnt <= sig_cnt + 1;
-        else
-            sig_cnt <= sig_cnt - 1;
-        end if;
-          
+
+        -- TEST COUNTER DIRECTION HERE
+            if (cnt_up = '1')
+            then
+                sig_cnt <= sig_cnt + 1;
+            else 
+                sig_cnt <= sig_cnt - 1;
+            end if;
       end if;
     end if;
 
